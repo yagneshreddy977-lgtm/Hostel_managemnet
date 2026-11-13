@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Campus Maintenance Operations - Global Design Tokens
+   Adapted to the Shadcn Library Dashboard Design System & Visual Language
+   Reference: https://registry.watermelon.sh/r/library-dashboard.json
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* 1. Shadcn Library-Dashboard Signature Colors */
+  --color-primary: #ff5150;           /* Signature Library Coral / Rose */
+  --color-primary-hover: #e6403f;
+  --color-primary-light: #fff2f2;     /* Subtle Coral Tint */
+  --color-primary-foreground: #ffffff;
+
+  /* Accent & Secondary */
+  --color-secondary: #f7f7f7;
+  --color-secondary-hover: #ededed;
+  --color-secondary-foreground: #242424;
+
+  --color-accent: #edf3fc;
+  --color-accent-foreground: #485066;
+
+  /* Completed / Successful (Emerald Green) */
+  --color-success: #10b981;
+  --color-success-hover: #059669;
+  --color-success-light: #f0fdf4;
+  --color-success-border: #bbf7d0;
+
+  /* Pending / Needs Attention (Warm Amber) */
+  --color-warning: #f59e0b;
+  --color-warning-hover: #d97706;
+  --color-warning-light: #fffbeb;
+  --color-warning-border: #fef08a;
+
+  /* Critical / Overdue / Errors (Coral Red) */
+  --color-danger: #ff5150;
+  --color-danger-hover: #dc2626;
+  --color-danger-light: #fff1f2;
+  --color-danger-border: #fecdd3;
+
+  /* Informational / In-Progress (Sky Blue) */
+  --color-info: #0284c7;
+  --color-info-hover: #0369a1;
+  --color-info-light: #f0f9ff;
+  --color-info-border: #bae6fd;
+
+  /* 2. Surfaces & Backgrounds */
+  --color-bg-page: #fafafa;           /* Ultra-clean light grey page background */
+  --color-bg-card: #ffffff;           /* Crisp white for cards & panels */
+  --color-bg-subtle: #f7f7f7;         /* Subtle secondary fills */
+  --color-bg-muted: #f4f4f5;          /* Muted pill / item backdrops */
+
+  /* 3. Text & Typography */
+  --color-text-main: #0a1b39;         /* Signature Library Deep Midnight Slate */
+  --color-text-muted: #71717a;        /* Balanced neutral grey */
+  --color-text-light: #858585;        /* Light muted for placeholders & meta */
+  --color-text-subtle: #a1a1aa;
+
+  /* 4. Borders & Rings */
+  --color-border: #ededed;            /* Signature subtle 1px border */
+  --color-border-subtle: #f4f4f5;
+  --color-border-strong: #e4e4e7;
+  --color-ring: rgba(255, 81, 80, 0.35);
+
+  /* 5. Elevation & Shadows (Shadcn Subtle) */
+  --shadow-xs: 0 1px 2px 0 rgba(10, 27, 57, 0.03);
+  --shadow-sm: 0 1px 3px 0 rgba(10, 27, 57, 0.04), 0 1px 2px -1px rgba(10, 27, 57, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(10, 27, 57, 0.05), 0 2px 4px -2px rgba(10, 27, 57, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(10, 27, 57, 0.06), 0 4px 6px -4px rgba(10, 27, 57, 0.02);
+  --shadow-dialog: 0 20px 25px -5px rgba(10, 27, 57, 0.1), 0 8px 10px -6px rgba(10, 27, 57, 0.05);
+
+  /* 6. Layout & Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;                  /* Signature 0.625rem rounded corners */
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Base Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-main);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+h1 { font-size: 24px; }
+h2 { font-size: 18px; }
+h3 { font-size: 16px; }
+h4 { font-size: 14px; }
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+button:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-bg-page), 0 0 0 4px var(--color-primary);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Inputs, Selects, Textareas */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--color-text-main);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-light);
+}
+
+/* Smooth Focus Ring Utility */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg-card), 0 0 0 4px var(--color-ring);
+}

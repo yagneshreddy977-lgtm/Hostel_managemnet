@@ -1,0 +1,801 @@
+/* =========================================================================
+   ASTRIX DASHBOARD DESIGN SYSTEM & TOKENS
+   Adapted from Watermelon Astrix Dashboard Registry (Tailwind-free pure CSS)
+   ========================================================================= */
+
+.astrix-dashboard-root {
+  --astrix-bg: #f8fafc;
+  --astrix-surface: #ffffff;
+  --astrix-surface-subtle: #f1f5f9;
+  --astrix-surface-hover: #e2e8f0;
+  --astrix-border: rgba(148, 163, 184, 0.22);
+  --astrix-border-strong: rgba(148, 163, 184, 0.4);
+  --astrix-text-primary: #0f172a;
+  --astrix-text-muted: #64748b;
+  --astrix-text-subtle: #94a3b8;
+  --astrix-primary: #ff5150;
+  --astrix-primary-light: rgba(255, 81, 80, 0.12);
+  --astrix-primary-hover: #e6403f;
+  --astrix-success: #10b981;
+  --astrix-success-light: rgba(16, 185, 129, 0.12);
+  --astrix-info: #0284c7;
+  --astrix-info-light: rgba(2, 132, 199, 0.12);
+  --astrix-warning: #f59e0b;
+  --astrix-warning-light: rgba(245, 158, 11, 0.14);
+  --astrix-danger: #ef4444;
+  --astrix-danger-light: rgba(239, 68, 68, 0.12);
+  --astrix-radius-lg: 16px;
+  --astrix-radius-md: 12px;
+  --astrix-radius-sm: 8px;
+  --astrix-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --astrix-shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
+  --astrix-shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.12);
+
+  background-color: var(--astrix-bg);
+  color: var(--astrix-text-primary);
+  font-family: inherit;
+  min-height: 100%;
+  padding-bottom: 40px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Dark Mode Tokens for Astrix Command Center */
+.astrix-dashboard-root.dark-theme {
+  --astrix-bg: #0b0f19;
+  --astrix-surface: #111827;
+  --astrix-surface-subtle: #1f2937;
+  --astrix-surface-hover: #374151;
+  --astrix-border: rgba(255, 255, 255, 0.09);
+  --astrix-border-strong: rgba(255, 255, 255, 0.18);
+  --astrix-text-primary: #f8fafc;
+  --astrix-text-muted: #94a3b8;
+  --astrix-text-subtle: #64748b;
+  --astrix-primary: #ff7776;
+  --astrix-primary-light: rgba(255, 119, 118, 0.18);
+  --astrix-shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+  --astrix-shadow-lg: 0 12px 40px -4px rgba(0, 0, 0, 0.6);
+}
+
+/* Astrix Dot-Grid Pattern */
+.astrix-pipeline-dots {
+  background-image: radial-gradient(
+    circle,
+    rgba(148, 163, 184, 0.25) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 16px 16px;
+}
+.astrix-dashboard-root.dark-theme .astrix-pipeline-dots {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 16px 16px;
+}
+
+/* Top Toolbar & Header */
+.astrix-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (min-width: 768px) {
+  .astrix-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.astrix-title-area h1 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.astrix-title-area p {
+  font-size: 14px;
+  color: var(--astrix-text-muted);
+  margin: 0;
+}
+
+.astrix-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.astrix-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--astrix-radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.astrix-btn-primary {
+  background-color: var(--astrix-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+}
+.astrix-btn-primary:hover {
+  background-color: var(--astrix-primary-hover);
+  transform: translateY(-1px);
+}
+
+.astrix-btn-secondary {
+  background-color: var(--astrix-surface);
+  color: var(--astrix-text-primary);
+  border-color: var(--astrix-border-strong);
+}
+.astrix-btn-secondary:hover {
+  background-color: var(--astrix-surface-subtle);
+}
+
+.astrix-btn-icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: var(--astrix-radius-sm);
+  background-color: var(--astrix-surface);
+  color: var(--astrix-text-muted);
+  border: 1px solid var(--astrix-border);
+}
+.astrix-btn-icon:hover {
+  color: var(--astrix-text-primary);
+  background-color: var(--astrix-surface-subtle);
+}
+
+/* Metric Cards Grid */
+.astrix-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.astrix-kpi-card {
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-md);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--astrix-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.astrix-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--astrix-shadow-md);
+  border-color: var(--astrix-border-strong);
+}
+
+.astrix-kpi-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.astrix-kpi-icon-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--astrix-radius-sm);
+  background-color: var(--astrix-surface-subtle);
+  border: 1px solid var(--astrix-border);
+  color: var(--astrix-primary);
+}
+
+.astrix-kpi-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--astrix-text-muted);
+}
+
+.astrix-kpi-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.astrix-kpi-value {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--astrix-text-primary);
+  line-height: 1;
+}
+
+.astrix-kpi-trend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.astrix-trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 11px;
+}
+.astrix-trend-positive {
+  background-color: var(--astrix-success-light);
+  color: var(--astrix-success);
+}
+.astrix-trend-warning {
+  background-color: var(--astrix-warning-light);
+  color: var(--astrix-warning);
+}
+.astrix-trend-danger {
+  background-color: var(--astrix-danger-light);
+  color: var(--astrix-danger);
+}
+
+.astrix-kpi-footnote {
+  font-size: 11px;
+  color: var(--astrix-text-subtle);
+  margin-top: 2px;
+}
+
+/* =========================================================================
+   LIVE PIPELINE CANVAS (The Signature Astrix Feature)
+   ========================================================================= */
+
+.astrix-pipeline-section {
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-lg);
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--astrix-shadow-sm);
+  position: relative;
+}
+
+.astrix-pipeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.astrix-pipeline-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.astrix-pipeline-header-title h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--astrix-text-primary);
+}
+
+.astrix-pipeline-canvas-box {
+  position: relative;
+  height: 380px;
+  border-radius: var(--astrix-radius-md);
+  border: 1px solid var(--astrix-border);
+  background-color: var(--astrix-surface-subtle);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.astrix-dashboard-root.dark-theme .astrix-pipeline-canvas-box {
+  background-color: rgba(17, 24, 39, 0.6);
+}
+
+/* Floating Status Pills inside Pipeline */
+.astrix-pipeline-floating-top {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.astrix-live-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: var(--astrix-radius-sm);
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--astrix-success);
+  box-shadow: var(--astrix-shadow-sm);
+}
+
+.astrix-live-pulse-dot {
+  position: relative;
+  display: flex;
+  width: 10px;
+  height: 10px;
+}
+.astrix-live-pulse-dot .ping {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--astrix-success);
+  opacity: 0.75;
+  animation: astrix-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.astrix-live-pulse-dot .dot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--astrix-success);
+}
+
+@keyframes astrix-ping {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.astrix-pipeline-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: var(--astrix-radius-sm);
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--astrix-primary);
+  box-shadow: var(--astrix-shadow-sm);
+}
+
+/* Pipeline Zoom Controls */
+.astrix-pipeline-zoom {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-sm);
+  overflow: hidden;
+  box-shadow: var(--astrix-shadow-md);
+  z-index: 10;
+}
+.astrix-pipeline-zoom button {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: none;
+  color: var(--astrix-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+.astrix-pipeline-zoom button:hover {
+  background-color: var(--astrix-surface-subtle);
+  color: var(--astrix-text-primary);
+}
+.astrix-pipeline-zoom button:first-child {
+  border-bottom: 1px solid var(--astrix-border);
+}
+
+.astrix-pipeline-preview-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 10;
+}
+
+/* Pipeline Flow Nodes Container */
+.astrix-pipeline-flow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 40px;
+  overflow-x: auto;
+  max-width: 100%;
+  transition: transform 0.25s ease;
+}
+
+.astrix-node-card {
+  width: 175px;
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-md);
+  padding: 14px;
+  box-shadow: var(--astrix-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.astrix-node-card:hover {
+  border-color: var(--astrix-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--astrix-shadow-md);
+}
+.astrix-node-card.active-node {
+  border-color: var(--astrix-primary);
+  box-shadow: 0 0 0 1px var(--astrix-primary), var(--astrix-shadow-md);
+}
+
+.astrix-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.astrix-node-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.astrix-node-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: var(--astrix-surface-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--astrix-primary);
+}
+
+.astrix-node-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--astrix-text-primary);
+  margin: 0;
+}
+
+.astrix-node-desc {
+  font-size: 11px;
+  color: var(--astrix-text-muted);
+  line-height: 1.3;
+}
+
+.astrix-node-metrics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--astrix-border);
+  font-size: 11px;
+}
+.astrix-node-count {
+  font-weight: 800;
+  color: var(--astrix-text-primary);
+}
+.astrix-node-sla {
+  color: var(--astrix-text-subtle);
+}
+
+/* Connecting Connector Lines */
+.astrix-connector {
+  display: flex;
+  align-items: center;
+  color: var(--astrix-primary);
+  flex-shrink: 0;
+  position: relative;
+  width: 32px;
+}
+.astrix-connector-line {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--astrix-border), var(--astrix-primary));
+  position: relative;
+}
+.astrix-connector-arrow {
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--astrix-primary);
+  border-right: 2px solid var(--astrix-primary);
+  transform: rotate(45deg);
+}
+
+/* =========================================================================
+   LIVE STREAM & DISPATCH TABLE SECTION
+   ========================================================================= */
+
+.astrix-stream-section {
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-lg);
+  padding: 24px;
+  box-shadow: var(--astrix-shadow-sm);
+}
+
+.astrix-stream-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .astrix-stream-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.astrix-stream-filters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--astrix-surface-subtle);
+  padding: 4px;
+  border-radius: var(--astrix-radius-sm);
+  border: 1px solid var(--astrix-border);
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.astrix-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--astrix-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.astrix-filter-pill:hover {
+  color: var(--astrix-text-primary);
+}
+.astrix-filter-pill.active {
+  background-color: var(--astrix-surface);
+  color: var(--astrix-text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.astrix-filter-pill .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  background-color: var(--astrix-surface-hover);
+  color: var(--astrix-text-muted);
+}
+.astrix-filter-pill.active .badge {
+  background-color: var(--astrix-primary-light);
+  color: var(--astrix-primary);
+  font-weight: 700;
+}
+
+/* Search Box */
+.astrix-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--astrix-surface-subtle);
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-sm);
+  padding: 0 12px;
+  height: 40px;
+  min-width: 260px;
+}
+.astrix-search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: var(--astrix-text-primary);
+  width: 100%;
+}
+.astrix-search-box input::placeholder {
+  color: var(--astrix-text-subtle);
+}
+.astrix-search-shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--astrix-text-subtle);
+}
+
+/* Modern Data Table */
+.astrix-table-container {
+  overflow-x: auto;
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-md);
+  background-color: var(--astrix-surface);
+  margin-bottom: 16px;
+}
+
+.astrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.astrix-table th {
+  background-color: var(--astrix-surface-subtle);
+  color: var(--astrix-text-primary);
+  font-weight: 600;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--astrix-border);
+  white-space: nowrap;
+}
+
+.astrix-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--astrix-border);
+  vertical-align: middle;
+  color: var(--astrix-text-primary);
+}
+
+.astrix-table tr:last-child td {
+  border-bottom: none;
+}
+
+.astrix-table tbody tr {
+  transition: background-color 0.12s ease;
+}
+.astrix-table tbody tr:hover {
+  background-color: var(--astrix-surface-subtle);
+}
+
+.astrix-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.astrix-status-processing {
+  background-color: var(--astrix-info-light);
+  color: var(--astrix-info);
+}
+.astrix-status-resolved {
+  background-color: var(--astrix-success-light);
+  color: var(--astrix-success);
+}
+.astrix-status-critical {
+  background-color: var(--astrix-danger-light);
+  color: var(--astrix-danger);
+}
+.astrix-status-pending {
+  background-color: var(--astrix-warning-light);
+  color: var(--astrix-warning);
+}
+
+/* Pagination */
+.astrix-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--astrix-text-muted);
+}
+
+.astrix-page-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.astrix-page-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--astrix-radius-sm);
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  color: var(--astrix-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.astrix-page-btn:hover:not(:disabled) {
+  background-color: var(--astrix-surface-subtle);
+  border-color: var(--astrix-border-strong);
+}
+.astrix-page-btn.active {
+  background-color: var(--astrix-primary);
+  border-color: var(--astrix-primary);
+  color: #ffffff;
+}
+.astrix-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Astrix Modal for Ticket Details */
+.astrix-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.astrix-modal-content {
+  background-color: var(--astrix-surface);
+  border: 1px solid var(--astrix-border);
+  border-radius: var(--astrix-radius-lg);
+  max-width: 600px;
+  width: 100%;
+  box-shadow: var(--astrix-shadow-lg);
+  overflow: hidden;
+  animation: astrix-modal-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes astrix-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
